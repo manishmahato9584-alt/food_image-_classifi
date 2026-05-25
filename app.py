@@ -8,7 +8,7 @@ from tensorflow.keras.models import load_model
 
 st.header('Food Image Classification')
 img = st.text_input('Enter Image name', value='Apple.jpg')
-model = load_model('C:\\Users\\manis\\OneDrive\\Desktop\\food_image _classifi\\image_classify.keras')
+model = load_model("image_classify.keras")
 # Dataset folder
 folder_path = r"C:\Users\manis\OneDrive\Desktop\food_image _classifi\Dataset"
 
