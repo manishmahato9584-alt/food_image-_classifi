@@ -6,6 +6,12 @@ import numpy as np
 from PIL import Image
 from tensorflow.keras.models import load_model
 
+@st.cache_resource
+def load_model_cached():
+    return load_model("image_classify.keras", compile=False)
+
+model = load_model_cached()
+
 st.header('Food Image Classification')
 img = st.text_input('Enter Image name', value='Apple.jpg')
 @st.cache_resource
@@ -299,9 +305,8 @@ img_batch = tf.expand_dims(img_array, 0)
 
 
 predictions = model.predict(img_batch)
+score = tf.nn.softmax(predictions[0])
 
-
-score = tf.nn.softmax(predictions)
 st.image(img, width=180)
 st.write('Veg/Fruit in image is ' + data_cat[np.argmax(score)]) 
 st.write('with accuracy of ' + str(np.max(score) * 100) + '%')
