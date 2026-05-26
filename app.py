@@ -6,22 +6,9 @@ import numpy as np
 from PIL import Image
 from tensorflow.keras.models import load_model
 
-@st.cache_resource
-def load_model_cached():
-    return load_model("image_classify.keras", compile=False)
-
-model = load_model_cached()
-
 st.header('Food Image Classification')
 img = st.text_input('Enter Image name', value='Apple.jpg')
-@st.cache_resource
-def load_model_cached():
-    return tf.keras.models.load_model(
-        "image_classify.keras",
-        compile=False
-    )
-
-model = load_model_cached()
+model = load_model("model.h5", compile=False)
 # Dataset folder
 folder_path = r"C:\Users\manis\OneDrive\Desktop\food_image _classifi\Dataset"
 
